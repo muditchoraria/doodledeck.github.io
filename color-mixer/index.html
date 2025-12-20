@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Mixer - Doodle Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="color-mixer.css">
+</head>
+<body>
+    <header>
+        <div id="top-header">
+            <h1>🎨 Color Mixer</h1>
+            <p>Mix colors and discover new ones!</p>
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link">🏠 Home</a>
+            <a href="../text-editor/index.html" class="nav-link">✏️ Text Editor</a>
+            <a href="index.html" class="nav-link active">🎨 Color Mixer</a>
+            <a href="../paint-canvas/index.html" class="nav-link">🖌️ Paint Canvas</a>
+            <a href="../particle-system/index.html" class="nav-link">✨ Magic Particles</a>
+            <a href="../alphabet-pangram/index.html" class="nav-link">🔤 Alphabet Adventure</a>
+            <a href="../number-bingo/index.html" class="nav-link">🔢 Number Bingo</a>
+        </nav>
+    </header>
+
+    <section id="instructions">
+        🌟 Drag and drop two colors into the mixing bowl to create new colors! 🌟
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="main-content">
+        <!-- Left Side - Color Selection -->
+        <div class="color-selection-side">
+            <!-- Color Palette - UPDATED (removed Dark/Light colors) -->
+            <section id="color-palette">
+                <h2>🎯 Pick Your Colors</h2>
+                <div class="color-section">
+                    <h3>Color Box Collection</h3>
+                    <div class="color-grid">
+                        <div class="color-tile" data-color="red" data-hex="#FF0000" style="background-color: #FF0000;" draggable="true">
+                            <span>Red</span>
+                        </div>
+                        <div class="color-tile" data-color="blue" data-hex="#0000FF" style="background-color: #0000FF;" draggable="true">
+                            <span>Blue</span>
+                        </div>
+                        <div class="color-tile" data-color="yellow" data-hex="#FFFF00" style="background-color: #FFFF00;" draggable="true">
+                            <span>Yellow</span>
+                        </div>
+                        <div class="color-tile" data-color="green" data-hex="#00FF00" style="background-color: #00FF00;" draggable="true">
+                            <span>Green</span>
+                        </div>
+                        <div class="color-tile" data-color="orange" data-hex="#FFA500" style="background-color: #FFA500;" draggable="true">
+                            <span>Orange</span>
+                        </div>
+                        <div class="color-tile" data-color="purple" data-hex="#800080" style="background-color: #800080;" draggable="true">
+                            <span>Purple</span>
+                        </div>
+                        <div class="color-tile" data-color="pink" data-hex="#FFC0CB" style="background-color: #FFC0CB;" draggable="true">
+                            <span>Pink</span>
+                        </div>
+                        <div class="color-tile" data-color="brown" data-hex="#8B4513" style="background-color: #8B4513;" draggable="true">
+                            <span>Brown</span>
+                        </div>
+                        <div class="color-tile" data-color="black" data-hex="#000000" style="background-color: #000000;" draggable="true">
+                            <span>Black</span>
+                        </div>
+                        <div class="color-tile" data-color="white" data-hex="#FFFFFF" style="background-color: #FFFFFF;" draggable="true">
+                            <span>White</span>
+                        </div>
+                        <div class="color-tile" data-color="gray" data-hex="#808080" style="background-color: #808080;" draggable="true">
+                            <span>Gray</span>
+                        </div>
+                        <div class="color-tile" data-color="lime" data-hex="#32CD32" style="background-color: #32CD32;" draggable="true">
+                            <span>Lime</span>
+                        </div>
+                        <div class="color-tile" data-color="cyan" data-hex="#00FFFF" style="background-color: #00FFFF;" draggable="true">
+                            <span>Cyan</span>
+                        </div>
+                        <div class="color-tile" data-color="magenta" data-hex="#FF00FF" style="background-color: #FF00FF;" draggable="true">
+                            <span>Magenta</span>
+                        </div>
+                        <div class="color-tile" data-color="violet" data-hex="#8A2BE2" style="background-color: #8A2BE2;" draggable="true">
+                            <span>Violet</span>
+                        </div>
+                        <div class="color-tile" data-color="indigo" data-hex="#4B0082" style="background-color: #4B0082;" draggable="true">
+                            <span>Indigo</span>
+                        </div>
+                        <div class="color-tile" data-color="turquoise" data-hex="#40E0D0" style="background-color: #40E0D0;" draggable="true">
+                            <span>Turquoise</span>
+                        </div>
+                        <div class="color-tile" data-color="gold" data-hex="#FFD700" style="background-color: #FFD700;" draggable="true">
+                            <span>Gold</span>
+                        </div>
+                        <div class="color-tile" data-color="silver" data-hex="#C0C0C0" style="background-color: #C0C0C0;" draggable="true">
+                            <span>Silver</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Color Picker Section -->
+            <section id="color-picker-section">
+                <h2>🎨 Or Pick Any Color</h2>
+                <div class="picker-container">
+                    <input type="color" id="color-picker" value="#ff0000">
+                    <button id="add-custom-color">Add Custom Color</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Side - Mixing Area -->
+        <div class="mixing-side">
+            <!-- Mixing Area -->
+            <section id="mixing-area">
+                <h2>🧪 Mixing Laboratory</h2>
+                <div id="mixing-bowl">
+                    <div id="drop-zone">
+                        <p style="font-size: 1.2em; margin-bottom: 20px;">Drop your colors here!</p>
+                        <div id="color-slots">
+                            <div class="color-slot"></div>
+                            <div class="plus-sign">+</div>
+                            <div class="color-slot"></div>
+                            <div class="equals-sign">=</div>
+                            <div class="result-slot" id="result-slot">?</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button id="mix-button" disabled>🪄 Mix Colors!</button>
+                        <button id="clear-button">🧹 Clear Bowl</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Result Display -->
+            <section id="result-display">
+                <div id="result-message"></div>
+                <div id="color-explanation"></div>
+            </section>
+
+            <!-- Discovery Gallery -->
+            <section id="discovery-gallery">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h2 style="margin: 0; color: var(--primary-color); font-size: 1.8rem;">🏆 Your Color Discoveries</h2>
+                    <button id="clear-discoveries-button" style="
+                        padding: 0.5rem 1rem;
+                        background: #ef4444;
+                        color: white;
+                        border: none;
+                        border-radius: 15px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        font-size: 0.9rem;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    ">🗑️ Clear All</button>
+                </div>
+                <div id="discovered-colors">
+                    <p style="color: #666; font-style: italic;">Mix basic colors to discover new ones!</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <!-- Sound effects generated using Web Audio API (no audio files needed) -->
+    
+    <script src="color-mixer.js"></script>
+</body>
+</html>

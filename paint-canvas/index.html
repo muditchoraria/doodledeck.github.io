@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Canvas - Doodle Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="paint-canvas.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div id="top-header">
+            <h1>🎨 Paint Canvas</h1>
+            <p>Create your masterpiece!</p>
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link">🏠 Home</a>
+            <a href="../text-editor/index.html" class="nav-link">✏️ Text Editor</a>
+            <a href="../color-mixer/index.html" class="nav-link">🎨 Color Mixer</a>
+            <a href="index.html" class="nav-link active">🖌️ Paint Canvas</a>
+            <a href="../particle-system/index.html" class="nav-link">✨ Magic Particles</a>
+            <a href="../alphabet-pangram/index.html" class="nav-link">🔤 Alphabet Adventure</a>
+            <a href="../number-bingo/index.html" class="nav-link">🔢 Number Bingo</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Drawing Tools -->
+        <section class="controls-section">
+            <h3>🛠️ Tools</h3>
+            <div class="tools-grid">
+                <button class="tool-btn active" data-tool="brush">
+                    <span class="tool-icon">🖌️</span>
+                    <span class="tool-name">Brush</span>
+                </button>
+                <button class="tool-btn" data-tool="roller">
+                    <span class="tool-icon">🎨</span>
+                    <span class="tool-name">Roller</span>
+                </button>
+                <button class="tool-btn" data-tool="splash">
+                    <span class="tool-icon">💦</span>
+                    <span class="tool-name">Splash</span>
+                </button>
+                <button class="tool-btn" data-tool="stamp">
+                    <span class="tool-icon">✨</span>
+                    <span class="tool-name">Stamp</span>
+                </button>
+                <button class="tool-btn" data-tool="eraser">
+                    <span class="tool-icon">🧹</span>
+                    <span class="tool-name">Eraser</span>
+                </button>
+            </div>
+
+            <!-- Tip for kids -->
+            <div class="tool-tip">
+                💡 <strong>Tip:</strong> Hold down longer for bigger stamps & splashes!
+            </div>
+
+            <!-- Brush/Eraser Size -->
+            <div class="size-control" id="size-control">
+                <label for="brush-size">Size:</label>
+                <input type="range" id="brush-size" min="5" max="50" value="10">
+                <span id="size-value">10</span>
+            </div>
+        </section>
+
+        <!-- Color Palette -->
+        <section class="controls-section" id="color-palette-section">
+            <h3>🎨 Colors</h3>
+            <div id="color-palette" class="color-palette">
+                <div class="color-option" data-color="#FF0000" style="background: #FF0000;"></div>
+                <div class="color-option" data-color="#FF6B00" style="background: #FF6B00;"></div>
+                <div class="color-option" data-color="#FFD700" style="background: #FFD700;"></div>
+                <div class="color-option" data-color="#00FF00" style="background: #00FF00;"></div>
+                <div class="color-option" data-color="#00BFFF" style="background: #00BFFF;"></div>
+                <div class="color-option" data-color="#0000FF" style="background: #0000FF;"></div>
+                <div class="color-option" data-color="#8B00FF" style="background: #8B00FF;"></div>
+                <div class="color-option" data-color="#FF1493" style="background: #FF1493;"></div>
+                <div class="color-option" data-color="#000000" style="background: #000000;"></div>
+                <div class="color-option" data-color="#FFFFFF" style="background: #FFFFFF; border: 2px solid #ddd;"></div>
+                <div class="color-option" data-color="#8B4513" style="background: #8B4513;"></div>
+                <div class="color-option" data-color="#808080" style="background: #808080;"></div>
+            </div>
+            <div class="current-color-display">
+                <span>Current:</span>
+                <div id="current-color" style="background: #FF0000;"></div>
+            </div>
+        </section>
+
+        <!-- Stamps (shown when stamp tool is selected) -->
+        <section class="controls-section" id="stamps-section" style="display: none;">
+            <h3>✨ Stamps</h3>
+            <div class="stamps-grid">
+                <button class="stamp-btn" data-stamp="⭐">⭐</button>
+                <button class="stamp-btn" data-stamp="🌟">🌟</button>
+                <button class="stamp-btn" data-stamp="✨">✨</button>
+                <button class="stamp-btn" data-stamp="🧸">🧸</button>
+                <button class="stamp-btn" data-stamp="🚗">🚗</button>
+                <button class="stamp-btn" data-stamp="🚂">🚂</button>
+                <button class="stamp-btn" data-stamp="🎈">🎈</button>
+                <button class="stamp-btn" data-stamp="🎁">🎁</button>
+                <button class="stamp-btn" data-stamp="🌈">🌈</button>
+                <button class="stamp-btn" data-stamp="🌸">🌸</button>
+                <button class="stamp-btn" data-stamp="🌺">🌺</button>
+                <button class="stamp-btn" data-stamp="🌻">🌻</button>
+                <button class="stamp-btn" data-stamp="🦋">🦋</button>
+                <button class="stamp-btn" data-stamp="🐝">🐝</button>
+                <button class="stamp-btn" data-stamp="🐞">🐞</button>
+                <button class="stamp-btn" data-stamp="🪨">🪨</button>
+                <button class="stamp-btn" data-stamp="⚪">⚪</button>
+                <button class="stamp-btn" data-stamp="🔴">🔴</button>
+                <button class="stamp-btn" data-stamp="🟡">🟡</button>
+                <button class="stamp-btn" data-stamp="🟢">🟢</button>
+            </div>
+        </section>
+
+        <!-- Canvas Area -->
+        <section class="canvas-section">
+            <canvas id="paint-canvas" width="1000" height="700"></canvas>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="actions-section">
+            <button id="clear-btn" class="action-btn">🗑️ Clear</button>
+            <button id="undo-btn" class="action-btn">↩️ Undo</button>
+            <button id="save-btn" class="action-btn">💾 Save</button>
+        </section>
+    </div>
+
+    <script src="paint-canvas.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Bingo - Learn Numbers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="number-bingo.css">
+</head>
+<body class="theme-casino">
+    <header>
+        <div id="top-header">
+            <h1>🔢 Number Bingo</h1>
+            <p>Learn numbers with a fun bingo game!</p>
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link">🏠 Home</a>
+            <a href="../text-editor/index.html" class="nav-link">✏️ Text Editor</a>
+            <a href="../color-mixer/index.html" class="nav-link">🎨 Color Mixer</a>
+            <a href="../paint-canvas/index.html" class="nav-link">🖌️ Paint Canvas</a>
+            <a href="../particle-system/index.html" class="nav-link">✨ Magic Particles</a>
+            <a href="../alphabet-pangram/index.html" class="nav-link">🔤 Alphabet Adventure</a>
+            <a href="index.html" class="nav-link active">🔢 Number Bingo</a>
+        </nav>
+    </header>
+
+    <div class="game-container">
+        <!-- Range Selection Screen -->
+        <div class="range-screen" id="rangeScreen">
+            <h2 class="screen-title">Choose Your Number Range</h2>
+            
+            <!-- Preset cards -->
+            <div class="range-cards">
+                <div class="range-card" data-min="1" data-max="20">
+                    <span class="card-icon">🎯</span>
+                    <h3>1-20</h3>
+                    <p>Beginner</p>
+                </div>
+                <div class="range-card" data-min="21" data-max="40">
+                    <span class="card-icon">⭐</span>
+                    <h3>21-40</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="range-card" data-min="1" data-max="40">
+                    <span class="card-icon">🏆</span>
+                    <h3>1-40</h3>
+                    <p>Advanced</p>
+                </div>
+            </div>
+            
+            <!-- Custom range input -->
+            <div class="custom-range">
+                <h3>Or Create Your Own Range</h3>
+                <div class="range-inputs">
+                    <div class="input-group">
+                        <label>From:</label>
+                        <input type="number" id="minNumber" min="1" max="999" value="1" />
+                    </div>
+                    <span class="separator">-</span>
+                    <div class="input-group">
+                        <label>To:</label>
+                        <input type="number" id="maxNumber" min="1" max="999" value="20" />
+                    </div>
+                </div>
+                <button class="start-custom-button" id="startCustomButton">Start Game</button>
+                <p class="hint">Max 100 numbers at once</p>
+                <p class="error-message hidden" id="errorMessage"></p>
+            </div>
+        </div>
+
+        <!-- Main Game Screen -->
+        <div class="game-screen hidden" id="gameScreen">
+            <!-- Header with controls -->
+            <div class="game-header">
+                <button class="back-button" id="backButton">⬅️ Back</button>
+                <div class="header-controls">
+                    <button class="theme-switcher" id="themeSwitcher">
+                        <span class="theme-icon">🎨</span>
+                        <span class="theme-name">Theme</span>
+                    </button>
+                    <div class="mode-toggle">
+                        <button class="mode-button active" id="manualMode">👆 Manual</button>
+                        <button class="mode-button" id="autoMode">🤖 Auto</button>
+                    </div>
+                </div>
+                <div class="progress-display" id="progressDisplay">
+                    <span class="progress-text">0/20</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme selector dropdown -->
+            <div class="theme-dropdown hidden" id="themeDropdown">
+                <button class="theme-option" data-theme="casino">🎰 Casino</button>
+                <button class="theme-option" data-theme="carnival">🎪 Carnival</button>
+                <button class="theme-option" data-theme="educational">🏫 Educational</button>
+                <button class="theme-option" data-theme="space">🌟 Space</button>
+            </div>
+
+            <!-- Main game content -->
+            <div class="game-content">
+                <!-- Left: Carousel Panel -->
+                <div class="carousel-panel">
+                    <div class="carousel-container" id="carouselContainer">
+                        <div class="carousel-track" id="carouselTrack">
+                            <!-- Numbers will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center: Number Display & Grid -->
+                <div class="center-panel">
+                    <!-- Big number display -->
+                    <div class="number-display hidden" id="numberDisplay">
+                        <div class="number-value" id="numberValue">15</div>
+                        <div class="number-word" id="numberWord">FIFTEEN</div>
+                        <div class="writing-instruction">Practice writing this number!</div>
+                        <button class="confirm-button" id="confirmButton">✓ Done</button>
+                    </div>
+
+                    <!-- Fireworks container -->
+                    <div class="fireworks-container" id="fireworksContainer"></div>
+
+                    <!-- Housie Grid -->
+                    <div class="housie-grid" id="housieGrid">
+                        <!-- Number cells will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Right: Controls -->
+                <div class="controls-panel">
+                    <button class="spin-button" id="spinButton">
+                        <span class="spin-icon">🎰</span>
+                        <span class="spin-text">Spin!</span>
+                    </button>
+                    <div class="auto-timer hidden" id="autoTimer">
+                        <div class="timer-circle">
+                            <svg class="timer-svg" viewBox="0 0 100 100">
+                                <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+                                <circle class="timer-progress" id="timerProgress" cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <span class="timer-text" id="timerText">5</span>
+                        </div>
+                        <button class="pause-button" id="pauseButton">⏸️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Celebration Screen -->
+        <div class="celebration-screen hidden" id="celebrationScreen">
+            <div class="celebration-content">
+                <h2 class="celebration-title">🎉 Amazing Work! 🎉</h2>
+                <p class="celebration-message" id="celebrationMessage">You learned all 20 numbers!</p>
+                <div class="confetti-container" id="confettiContainer"></div>
+                <div class="celebration-buttons">
+                    <button class="celebrate-button" id="tryAgainButton">🔄 Try Again</button>
+                    <button class="celebrate-button primary" id="newRangeButton">🎯 New Range</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="numberSound" preload="auto"></audio>
+    <audio id="celebrationSound" preload="auto">
+        <source src="https://cdn.freesound.org/previews/397/397355_7388931-lq.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="completeSound" preload="auto">
+        <source src="https://cdn.freesound.org/previews/270/270404_5123851-lq.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="number-bingo.js"></script>
+</body>
+</html>
+

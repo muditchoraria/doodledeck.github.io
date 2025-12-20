@@ -1,0 +1,413 @@
+/* Define CSS Variables for colors and common styles */
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --accent-color: #f093fb;
+    --text-color: #2d3748;
+    --bg-light: #f7fafc;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-heavy: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+    --main-bg-color: #34495e;
+    --main-text-color: #ffffff;
+    --editor-border-color: #ffffff;
+    --trail-color: gold;
+
+    --rainbow-bg-color: #34495e;
+    --rainbow-text-color: #ffffff;
+
+    --pastel-bg-color: #f8f9fa;
+    --pastel-text-color: #333333;
+    --pastel-trail-color: #FF69B4;
+
+    --neon-bg-color: #1a1a1a;
+    --neon-text-color: #00FFFF;
+    --neon-trail-color: #FFFFFF;
+
+    --bubble-color: rgba(0, 191, 255, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body styling */
+body {
+    font-family: 'Fredoka', 'Bubblegum Sans', cursive;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+    overflow-x: hidden;
+    position: relative;
+    transition: background 0.5s ease;
+}
+
+/* Header Styles */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-medium);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#top-header {
+    text-align: center;
+    padding: 1.5rem 1rem 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+#top-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#top-header p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    padding: 0.6rem 1.2rem;
+    background: white;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+/* Controls container styling */
+#controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    max-width: 900px;
+    box-shadow: var(--shadow-heavy);
+    backdrop-filter: blur(10px);
+    z-index: 3;
+}
+
+/* Styling for control sections */
+#fontControls, #paletteControls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Button styling - Updated to match other tools */
+button {
+    font-size: 1rem;
+    font-family: 'Fredoka', 'Bubblegum Sans', cursive;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    margin: 0;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Button hover effect */
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* Editor styling */
+#editor {
+    width: 95%;
+    max-width: 1200px;
+    min-height: 500px;
+    margin: 0 auto 2rem;
+    padding: 2.5rem;
+    overflow-y: auto;
+    font-size: 2em;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: var(--main-text-color);
+    box-shadow: var(--shadow-heavy);
+    border-radius: 20px;
+    white-space: pre-wrap;
+    position: relative;
+    z-index: 1;
+    transition: background-color 1s ease, color 1s ease;
+    border: none;
+}
+
+#editor.rainbow {
+    background-color: var(--rainbow-bg-color);
+    color: var(--rainbow-text-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+#editor.sunset {
+    background-color: #3d2817;
+    color: #FFF5E1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+#editor.neon {
+    background-color: var(--neon-bg-color);
+    color: var(--neon-text-color);
+}
+
+#editor.jungle {
+    background-color: #1e3a1e;
+    color: #F0FFF0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#editor.galaxy {
+    background-color: #0a0a2e;
+    color: #E6E6FA;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+/* Mouse trail effect */
+.trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+    animation: fadeOut 0.5s forwards;
+    background-color: var(--trail-color);
+}
+
+/* Animation for trail fading */
+@keyframes fadeOut {
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Bubble animation effect - OPTIMIZED */
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bubbleRise 4s ease-out forwards;
+    z-index: 0;
+    background-color: var(--bubble-color);
+    will-change: transform, opacity;
+}
+
+/* Animation for bubbles rising - OPTIMIZED */
+@keyframes bubbleRise {
+    0% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+    100% { transform: translate3d(0, -500px, 0) scale(0.5); opacity: 0; }
+}
+
+/* Leaf falling animation effect - OPTIMIZED */
+.leaf {
+    position: fixed;
+    background-color: var(--pastel-trail-color);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: leafFall 5s ease-out forwards;
+    z-index: 0;
+    will-change: transform, opacity;
+}
+
+/* Animation for leaves falling - OPTIMIZED */
+@keyframes leafFall {
+    0% { transform: translate3d(0, -50px, 0) rotate(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translate3d(100px, 500px, 0) rotate(360deg); opacity: 0; }
+}
+
+/* Star falling animation effect - OPTIMIZED */
+.star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background-color: var(--neon-trail-color);
+    pointer-events: none;
+    animation: starFall 3.5s ease-out forwards;
+    z-index: 0;
+    will-change: transform, opacity;
+}
+
+/* Animation for stars falling - OPTIMIZED */
+@keyframes starFall {
+    0% { transform: translate3d(0, -50px, 0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translate3d(0, 500px, 0); opacity: 0; }
+}
+
+/* Jungle animal effect - OPTIMIZED */
+.jungle-animal {
+    position: fixed;
+    pointer-events: none;
+    animation: animalFall 8s ease-in-out forwards;
+    z-index: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    will-change: transform, opacity;
+}
+
+/* Animation for jungle animals falling and swaying - OPTIMIZED */
+@keyframes animalFall {
+    0% { 
+        transform: translate3d(0, -50px, 0) rotate(0deg); 
+        opacity: 0; 
+    }
+    10% { 
+        opacity: 1; 
+    }
+    50% { 
+        transform: translate3d(30px, 250px, 0) rotate(10deg); 
+        opacity: 1; 
+    }
+    75% {
+        transform: translate3d(-20px, 400px, 0) rotate(-10deg);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: translate3d(50px, 600px, 0) rotate(20deg); 
+        opacity: 0; 
+    }
+}
+
+/* Sunset glowing particles effect - OPTIMIZED */
+.sunset-particle {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    animation: sunsetFloat 6s ease-in-out forwards;
+    z-index: 0;
+    opacity: 0.8;
+    will-change: transform, opacity;
+}
+
+/* Animation for sunset particles floating and glowing - OPTIMIZED */
+@keyframes sunsetFloat {
+    0% { 
+        transform: translate3d(0, -50px, 0) scale(1); 
+        opacity: 0; 
+    }
+    10% { 
+        opacity: 0.9; 
+    }
+    50% { 
+        transform: translate3d(-40px, 300px, 0) scale(1.2); 
+        opacity: 0.8; 
+    }
+    80% {
+        transform: translate3d(30px, 500px, 0) scale(0.8);
+        opacity: 0.5;
+    }
+    100% { 
+        transform: translate3d(-20px, 650px, 0) scale(0.3); 
+        opacity: 0; 
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+    
+    #top-header h1 {
+        font-size: 2rem;
+    }
+    
+    #top-header p {
+        font-size: 1rem;
+    }
+    
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    #controls {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    #editor {
+        width: 95%;
+        padding: 1rem;
+        font-size: 1.5em;
+        margin: 1rem auto;
+    }
+    
+    button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+}

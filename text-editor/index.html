@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chalkboard Text Editor for Kids</title>
+    <!-- Linking Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Fredoka:wght@400;600&family=Indie+Flower&family=Fredoka+One&family=Pacifico&family=Chewy&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <!-- Linking Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Linking external stylesheet -->
+    <link rel="stylesheet" href="text-editor.css">
+</head>
+<body>
+    <header>
+        <div id="top-header">
+            <h1>✏️ Text Editor</h1>
+            <p>Make your words colorful and fun!</p>
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link">🏠 Home</a>
+            <a href="index.html" class="nav-link active">✏️ Text Editor</a>
+            <a href="../color-mixer/index.html" class="nav-link">🎨 Color Mixer</a>
+            <a href="../paint-canvas/index.html" class="nav-link">🖌️ Paint Canvas</a>
+            <a href="../particle-system/index.html" class="nav-link">✨ Magic Particles</a>
+            <a href="../alphabet-pangram/index.html" class="nav-link">🔤 Alphabet Adventure</a>
+            <a href="../number-bingo/index.html" class="nav-link">🔢 Number Bingo</a>
+        </nav>
+    </header>
+    <!-- Controls for changing fonts, colors, and inserting ASCII art -->
+    <section id="controls">
+        <div id="fontControls" aria-label="Font Controls">
+            <button data-action="increase-font" aria-label="Increase font size">🔍 A+</button>
+            <button data-action="decrease-font" aria-label="Decrease font size">🔍 A-</button>
+            <button data-action="toggle-font" aria-label="Toggle font">🔤 Font</button>
+        </div>
+        <div id="paletteControls" aria-label="Color Palette Controls">
+            <button data-action="set-palette" data-palette="rainbow" aria-label="Rainbow palette">🌈 Rainbow</button>
+            <button data-action="set-palette" data-palette="sunset" aria-label="Sunset palette">🌅 Sunset</button>
+            <button data-action="set-palette" data-palette="neon" aria-label="Neon palette">💡 Neon</button>
+            <button data-action="set-palette" data-palette="jungle" aria-label="Jungle palette">🌿 Jungle</button>
+            <button data-action="set-palette" data-palette="galaxy" aria-label="Galaxy palette">🌌 Galaxy</button>
+        </div>
+    </section>
+    <!-- Editable text area -->
+    <section id="editor" contenteditable="true" aria-label="Text Editor"></section>
+    <!-- Audio for typing and palette change sounds -->
+    <audio id="typingSound" src="https://cdn.freesound.org/previews/194/194797_670763-lq.mp3" preload="auto"></audio>
+    <audio id="paletteSound" src="https://cdn.freesound.org/previews/350/350866_5450487-lq.mp3" preload="auto"></audio>
+    <!-- Linking external JavaScript -->
+    <script src="text-editor.js"></script>
+</body>
+</html>

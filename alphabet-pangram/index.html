@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Adventure - Pangram Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="alphabet-pangram.css">
+</head>
+<body>
+    <header>
+        <div id="top-header">
+            <h1>🔤 Alphabet Adventure</h1>
+            <p>Spin the wheel and learn to write the alphabet!</p>
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link">🏠 Home</a>
+            <a href="index.html" class="nav-link active">🔤 Alphabet Adventure</a>
+            <a href="../text-editor/index.html" class="nav-link">✏️ Text Editor</a>
+            <a href="../color-mixer/index.html" class="nav-link">🎨 Color Mixer</a>
+            <a href="../paint-canvas/index.html" class="nav-link">🖌️ Paint Canvas</a>
+            <a href="../particle-system/index.html" class="nav-link">✨ Magic Particles</a>
+            <a href="../number-bingo/index.html" class="nav-link">🔢 Number Bingo</a>
+        </nav>
+    </header>
+
+    <div class="game-container">
+        <!-- Roulette Selection Screen -->
+        <div class="roulette-screen" id="rouletteScreen">
+            <h2 class="screen-title">Choose Your Adventure!</h2>
+            <div class="start-screen" id="startScreen">
+                <div class="choice-buttons">
+                    <button class="choice-button" id="randomButton">
+                        🎲<br>
+                        <span class="choice-text">Random Adventure</span>
+                        <span class="choice-hint">Let the wheel decide!</span>
+                    </button>
+                    <button class="choice-button" id="chooseButton">
+                        🎯<br>
+                        <span class="choice-text">Pick Your Own</span>
+                        <span class="choice-hint">Choose your favorite!</span>
+                    </button>
+                </div>
+            </div>
+            <div class="roulette-wheel hidden" id="rouletteWheel">
+                <!-- Pangram cards will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Game Play Screen -->
+        <div class="game-screen hidden" id="gameScreen">
+            <div class="game-header">
+                <button class="back-button" id="backButton">⬅️ Back</button>
+                <div class="theme-badge" id="themeBadge"></div>
+                <div class="mode-toggle">
+                    <button class="mode-button active" id="typingMode">⌨️ Typing</button>
+                    <button class="mode-button" id="writingMode">✍️ Writing</button>
+                </div>
+                <button class="reset-button" id="resetButton">🔄 Reset</button>
+            </div>
+
+            <div class="pangram-display" id="pangramDisplay">
+                <!-- Individual letter spans will be inserted here -->
+            </div>
+
+            <div class="progress-section">
+                <h3>Letters You've Found:</h3>
+                <div class="alphabet-progress" id="alphabetProgress">
+                    <!-- A-Z progress indicators -->
+                </div>
+            </div>
+
+            <div class="on-screen-keyboard" id="keyboard">
+                <!-- Keyboard buttons will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Celebration Screen -->
+        <div class="celebration-screen hidden" id="celebrationScreen">
+            <div class="celebration-content">
+                <h2 class="celebration-title">🎉 Amazing Work! 🎉</h2>
+                <p class="celebration-message">You found all 26 letters of the alphabet!</p>
+                <div class="confetti-container" id="confettiContainer"></div>
+                <div class="celebration-buttons">
+                    <button class="celebrate-button" id="tryAgainButton">🔄 Try This Again</button>
+                    <button class="celebrate-button primary" id="newPangramButton">🎯 New Adventure</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="letterSound" preload="auto">
+        <source src="https://cdn.freesound.org/previews/341/341695_5858296-lq.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="completeSound" preload="auto">
+        <source src="https://cdn.freesound.org/previews/270/270404_5123851-lq.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="celebrationSound" preload="auto">
+        <source src="https://cdn.freesound.org/previews/397/397355_7388931-lq.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="alphabet-pangram.js"></script>
+</body>
+</html>
+

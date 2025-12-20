@@ -1,39 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chalkboard Text Editor for Kids</title>
-    <!-- Linking Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Comic+Neue:wght@700&family=Indie+Flower&display=swap">
-    <!-- Linking Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Linking external stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <title>Doodle Deck - Creative Tools for Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', 'Bubblegum Sans', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: white;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            animation: fadeInUp 1s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .tool-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tool-title {
+            font-size: 2rem;
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1 id="top-header">Doodle Deck</h1>
-    </header>
-    <!-- Controls for changing fonts, colors, and inserting ASCII art -->
-    <section id="controls">
-        <div id="fontControls" aria-label="Font Controls">
-            <button data-action="increase-font" aria-label="Increase font size">🔍 A+</button>
-            <button data-action="decrease-font" aria-label="Decrease font size">🔍 A-</button>
-            <button data-action="toggle-font" aria-label="Toggle font">🔤 Font</button>
+    <div class="container">
+        <header>
+            <h1>🎨 Doodle Deck</h1>
+            <p class="tagline">Creative Tools for Kids to Learn and Play!</p>
+        </header>
+
+        <div class="tools-grid">
+            <a href="text-editor/index.html" class="tool-card">
+                <span class="tool-icon">✏️</span>
+                <h2 class="tool-title">Text Editor</h2>
+                <p class="tool-description">
+                    Create colorful text with fun fonts and amazing themes! 
+                    Watch your words come alive with rainbow, jungle, sunset, and galaxy effects.
+                </p>
+            </a>
+
+            <a href="color-mixer/index.html" class="tool-card">
+                <span class="tool-icon">🎨</span>
+                <h2 class="tool-title">Color Mixer</h2>
+                <p class="tool-description">
+                    Mix colors together and discover new ones! 
+                    Drag and drop colors into the mixing bowl and learn about color combinations.
+                </p>
+            </a>
+
+            <a href="paint-canvas/index.html" class="tool-card">
+                <span class="tool-icon">🖌️</span>
+                <h2 class="tool-title">Paint Canvas</h2>
+                <p class="tool-description">
+                    Create amazing artwork with brushes, rollers, stamps, and splash effects!
+                    Choose your colors and let your imagination run wild.
+                </p>
+            </a>
+
+            <a href="particle-system/index.html" class="tool-card">
+                <span class="tool-icon">✨</span>
+                <h2 class="tool-title">Magic Particles</h2>
+                <p class="tool-description">
+                    Use your hands to control magical floating shapes!
+                    Make stars, hearts, and flowers dance in 3D.
+                </p>
+            </a>
+
+            <a href="alphabet-pangram/index.html" class="tool-card">
+                <span class="tool-icon">🔤</span>
+                <h2 class="tool-title">Alphabet Adventure</h2>
+                <p class="tool-description">
+                    Spin the pangram wheel and learn to write all 26 letters! 
+                    Watch letters glow as you practice writing the alphabet.
+                </p>
+            </a>
+
+            <a href="number-bingo/index.html" class="tool-card">
+                <span class="tool-icon">🔢</span>
+                <h2 class="tool-title">Number Bingo</h2>
+                <p class="tool-description">
+                    Learn numbers with a fun bingo game! 
+                    Spin the carousel, hear numbers, and practice writing them.
+                </p>
+            </a>
         </div>
-        <div id="paletteControls" aria-label="Color Palette Controls">
-            <button data-action="set-palette" data-palette="rainbow" aria-label="Rainbow palette">🌈 Rainbow</button>
-            <button data-action="set-palette" data-palette="pastel" aria-label="Pastel palette">🎨 Pastel</button>
-            <button data-action="set-palette" data-palette="neon" aria-label="Neon palette">💡 Neon</button>
-        </div>
-    </section>
-    <!-- Editable text area -->
-    <section id="editor" contenteditable="true" aria-label="Text Editor"></section>
-    <!-- Audio for typing and palette change sounds -->
-    <audio id="typingSound" src="https://cdn.freesound.org/previews/194/194797_670763-lq.mp3" preload="auto"></audio>
-    <audio id="paletteSound" src="https://cdn.freesound.org/previews/350/350866_5450487-lq.mp3" preload="auto"></audio>
-    <!-- Linking external JavaScript -->
-    <script src="scripts.js"></script>
+
+        <footer>
+            <p>✨ Made with love for creative kids ✨</p>
+        </footer>
+    </div>
 </body>
 </html>
+
